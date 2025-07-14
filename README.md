@@ -57,6 +57,14 @@ The Blog Summariser Web App is a full-stack web application built with Next.js 1
 
 ---
 
+---
+
+## Live Demo
+
+[View the Live App on Vercel]()
+
+---
+
 ## Project Structure
 
 ```
