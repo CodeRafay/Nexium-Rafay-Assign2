@@ -6,6 +6,7 @@ The Blog Summariser Web App is a full-stack web application built with Next.js 1
 
 - [Features](#features)
 - [Technologies](#technologies)
+- [Live Demo](#live-demo)
 - [Project Structure](#project-structure)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
@@ -14,6 +15,7 @@ The Blog Summariser Web App is a full-stack web application built with Next.js 1
 - [Troubleshooting](#troubleshooting)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
+- [Contact](#contact-information)
 - [License](#license)
 
 ## Features
@@ -46,6 +48,14 @@ The Blog Summariser Web App is a full-stack web application built with Next.js 1
   - JavaScript (no TypeScript)
   - Custom JavaScript dictionary for Urdu translation
   - Environment variables for configuration
+ 
+---
+
+## Live Demo
+
+[View the Live App on Vercel]()
+
+---
 
 ## Project Structure
 
@@ -284,6 +294,11 @@ Contributions are welcome! To contribute:
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Open a pull request.
 
+
+## Contact Information
+
+For questions, feedback, or collaboration, please contact: [Rafay Adeel](mailto:rafayadeel1999@gmail.com)
+
 ## License
 
-This project is licensed under the (Apache 2.0 Licence)[LICENCE].
+This project is licensed under the [Apache 2.0 License](LICENSE).
