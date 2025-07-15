@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-//import { cn } from "../../lib/utils";
 
 function Card({ className, ...props }) {
   return (
@@ -28,6 +27,7 @@ function CardTitle({ className, ...props }) {
     <h3
       className={cn(
         "text-2xl font-semibold leading-none tracking-tight",
+        "text-gray-900 dark:text-white",
         className
       )}
       {...props}

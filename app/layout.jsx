@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-background text-foreground min-h-screen`}>
-        <main className="container mx-auto p-4">{children}</main>
+        <main className="container mx-auto p-4 max-w-full overflow-hidden">{children}</main>
       </body>
     </html>
   );
