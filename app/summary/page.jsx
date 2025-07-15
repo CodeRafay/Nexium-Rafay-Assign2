@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SummaryCard from '../components/SummaryCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorAlert from '../components/ErrorAlert';
 
-export default function Summary({ searchParams }) {
+export default function Summary() {
   const [fullText, setFullText] = useState('');
   const [summaryEn, setSummaryEn] = useState('');
   const [summaryUrdu, setSummaryUrdu] = useState('');
@@ -16,15 +17,19 @@ export default function Summary({ searchParams }) {
   const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState('scraping');
 
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     const processBlog = async () => {
       try {
         console.log('Search params:', searchParams);
-        const url = decodeURIComponent(searchParams?.url || '');
-        const fullText = decodeURIComponent(searchParams?.full_text || '');
+        const url = searchParams.get('url');
+        const fullText = searchParams.get('full_text');
+        
         if (!url || !fullText) {
           throw new Error('Missing URL or full text in query parameters');
         }
+        
         setFullText(fullText);
         setCurrentStep('summarizing');
 
