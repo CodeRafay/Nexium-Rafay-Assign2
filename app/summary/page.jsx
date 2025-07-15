@@ -23,8 +23,30 @@ export default function Summary() {
     const processBlog = async () => {
       try {
         console.log('Search params:', searchParams);
-        const url = searchParams.get('url');
-        const fullText = searchParams.get('full_text');
+        let url = searchParams.get('url');
+        let fullText = searchParams.get('full_text');
+        
+        // Check if we have the data in window object (for longer content)
+        if ((!url || !fullText) && typeof window !== 'undefined' && window.blogData) {
+          url = window.blogData.url;
+          fullText = window.blogData.full_text;
+          // Clean up
+          delete window.blogData;
+        }
+        
+        // If still no data, try to re-scrape using the URL
+        if (!fullText && url) {
+          console.log('Re-scraping blog content...');
+          const response = await fetch('/api/scrapeBlog', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url }),
+          });
+          
+          const data = await response.json();
+          if (data.error) throw new Error(data.error);
+          fullText = data.full_text;
+        }
         
         if (!url || !fullText) {
           throw new Error('Missing URL or full text in query parameters');

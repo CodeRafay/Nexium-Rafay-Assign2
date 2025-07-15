@@ -29,7 +29,27 @@ export default function URLInputForm() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
 
-      router.push(`/summary?url=${encodeURIComponent(url)}&full_text=${encodeURIComponent(data.full_text)}`);
+      // Navigate to summary page - try both methods
+      try {
+        // Method 1: Try with URL params (for shorter content)
+        if (data.full_text.length < 1000) {
+          router.push(`/summary?url=${encodeURIComponent(url)}&full_text=${encodeURIComponent(data.full_text)}`);
+        } else {
+          // Method 2: For longer content, use a different approach
+          const summaryUrl = `/summary?url=${encodeURIComponent(url)}&text_length=${data.full_text.length}`;
+          
+          // Store in window object temporarily
+          window.blogData = {
+            url: url,
+            full_text: data.full_text
+          };
+          
+          router.push(summaryUrl);
+        }
+      } catch (navError) {
+        // Fallback navigation
+        router.push(`/summary?url=${encodeURIComponent(url)}&fallback=true`);
+      }
     } catch (err) {
       setError(err.message || 'Failed to scrape blog');
     } finally {
