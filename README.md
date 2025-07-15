@@ -74,6 +74,7 @@ The Blog Summariser Web App is a full-stack web application built with Next.js 1
 │   ├── /components/
 │   │   ├── URLInputForm.jsx    # Form for entering blog URL
 │   │   ├── SummaryCard.jsx     # Displays scraped text and summaries
+│   │   ├── SummaryContent.jsx  # Logic for /summary/page.jsx
 │   │   ├── LoadingSpinner.jsx  # Custom loading spinner
 │   │   └── ErrorAlert.jsx      # Error message display
 │   ├── globals.css             # Tailwind and Shadcn UI styles
